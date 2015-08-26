@@ -12,6 +12,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import com.helpchat.notifications.commons.api.HttpClientCaller;
 import com.helpchat.notifications.commons.model.ChatNotification;
 import com.helpchat.notifications.commons.model.SmsBO;
+import com.helpchat.notifications.dto.CustomerNotificationResponse;
+import com.helpchat.notifications.dto.NotificationDispatchConfig;
+import com.helpchat.notifications.service.INotificationService;
 
 public class NotificationServiceImpl {
 
@@ -43,6 +46,11 @@ public class NotificationServiceImpl {
     } catch (Exception e) {
       LOGGER.error("Error while pushing sms for mobile number : " + sms.getTo(), e);
     }
+  }
+
+  public CustomerNotificationResponse sendSMS(NotificationDispatchConfig notificationDispatchConfig) {
+    // TODO Auto-generated method stub
+    return null;
   }
 
 }

@@ -24,6 +24,7 @@
 		<rabbit:bindings>
 			<rabbit:binding key="helpchat_emailqueue" queue="helpchat_emailqueue"></rabbit:binding>
 			<rabbit:binding key="helpchat_smsqueue" queue="helpchat_smsqueue"></rabbit:binding>
+			<rabbit:binding key="helpchat_pushnotification" queue="helpchat_pushnotification"></rabbit:binding>
 		</rabbit:bindings>
 	</rabbit:direct-exchange>
 
@@ -43,6 +44,13 @@
 		<constructor-arg value="false"></constructor-arg>
 	</bean>
 	
+	<bean id="helpchat_pushnotification" class="org.springframework.amqp.core.Queue">
+		<constructor-arg value="helpchat_pushnotification"></constructor-arg>
+		<constructor-arg value="true"></constructor-arg>
+		<constructor-arg value="false"></constructor-arg>
+		<constructor-arg value="false"></constructor-arg>
+	</bean>
+	
 	
 	<bean id="amqpEmailTemplate" class="org.springframework.amqp.rabbit.core.RabbitTemplate">
 		<constructor-arg ref="connectionFactory"></constructor-arg>
@@ -57,5 +65,13 @@
 		<property name="routingKey" value="helpchat_smsqueue"></property>
 		<property name="queue" value="helpchat_smsqueue"></property>
 	</bean>
+	
+	<bean id="amqpPushNotificationTemplate" class="org.springframework.amqp.rabbit.core.RabbitTemplate">
+		<constructor-arg ref="connectionFactory"></constructor-arg>
+		<property name="exchange" value="exchange"></property>
+		<property name="routingKey" value="helpchat_pushnotification"></property>
+		<property name="queue" value="helpchat_pushnotification"></property>
+	</bean>
+	
 	
 </beans>
