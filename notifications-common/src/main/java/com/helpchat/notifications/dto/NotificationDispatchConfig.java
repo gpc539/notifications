@@ -13,6 +13,7 @@ public class NotificationDispatchConfig implements Serializable {
   private List<String> recipients;
   private String text;
   private String templateName;
+  private List<KeyValuePair> dispatchParameters;
   private NotificationType type = NotificationType.TRANSACTIONAL;
   private NotificationPlatform platform;
 
@@ -68,4 +69,12 @@ public class NotificationDispatchConfig implements Serializable {
     this.platform = platform;
   }
   
+  public List<KeyValuePair> getDispatchParameters() {
+    return dispatchParameters;
+  }
+
+  public void setDispatchParameters(List<KeyValuePair> dispatchParameters) {
+    this.dispatchParameters = dispatchParameters;
+  }
+
 }

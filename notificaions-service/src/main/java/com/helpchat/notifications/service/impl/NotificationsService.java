@@ -2,21 +2,17 @@ package com.helpchat.notifications.service.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.helpchat.notifications.commons.exception.ErrorCode;
-import com.helpchat.notifications.commons.exception.NotificationException;
 import com.helpchat.notifications.dto.CustomerNotificationResponse;
 import com.helpchat.notifications.dto.NotificationDTO;
 import com.helpchat.notifications.dto.NotificationDispatchConfig;
 import com.helpchat.notifications.service.INotificationService;
 import com.helpchat.notifications.service.IQueueService;
+import com.helpchat.notifications.util.TemplateUtil;
 
 @Service
 public class NotificationsService implements INotificationService {
@@ -27,6 +23,8 @@ public class NotificationsService implements INotificationService {
   
   @Autowired
   private IQueueService queueService;
+  @Autowired
+  private TemplateUtil templateUtil;
 
   public CustomerNotificationResponse sendSMS(NotificationDispatchConfig notificationDispatchConfig) {
     return null;
@@ -46,9 +44,24 @@ public class NotificationsService implements INotificationService {
       LOGGER.error("Error in parsing "+jpe);
     }
     return null;
+  }
+      /*
+     * for (String receipient : notificationDispatchConfig.getRecipients()) { SmsDispatchParameter
+     * smsDispatchParameter = new SmsDispatchParameter(smsText, recipient, appName,
+     * marketplaceId.getValue(), customerNotificationAuditData,
+     * smsDispatchConfig.getCustomerNotificationId(), smsDispatchConfig.isSmsDuplicationAllowed());
+     * 
+     * CustomerNotificationSendStatus notificationSendStatus =
+     * customerNotificationMessageSender.sendSmsNotification(smsDispatchParameter);
+     * 
+     * customerNotificationReferences.add(smsDispatchParameter.getCustomerNotificationReference());
+     * 
+     * if (CustomerNotificationSendStatus.FAILURE.equals(notificationSendStatus)) { return new
+     * CustomerNotificationResponse(CustomerNotificationSendStatus.FAILURE,
+     * customerNotificationReferences); } } return new
+     * CustomerNotificationResponse(CustomerNotificationSendStatus.SUCCESS,
+     * customerNotificationReferences); }
+     */
 
   }
 
-
-
-}
