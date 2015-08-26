@@ -1,22 +1,24 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>com.helpchat</groupId>
-    <artifactId>notifications</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
-  <artifactId>notificaions-service</artifactId>
-  <properties>
-  	<spring.rabbit.version>1.4.0.RELEASE</spring.rabbit.version>
-  	<httpclient.version>4.5</httpclient.version>
-  </properties>
-  <dependencies>
-  		<dependency>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.helpchat</groupId>
+		<artifactId>notifications</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>notificaions-service</artifactId>
+	<properties>
+		<spring.rabbit.version>1.4.0.RELEASE</spring.rabbit.version>
+		<httpclient.version>4.5</httpclient.version>
+		<velocity.version>1.7</velocity.version>
+	</properties>
+	<dependencies>
+		<dependency>
 			<groupId>com.helpchat</groupId>
 			<artifactId>notifications-common</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-  		<dependency>
+		<dependency>
 			<groupId>org.springframework.amqp</groupId>
 			<artifactId>spring-rabbit</artifactId>
 			<version>${spring.rabbit.version}</version>
@@ -26,5 +28,10 @@
 			<artifactId>httpclient</artifactId>
 			<version>${httpclient.version}</version>
 		</dependency>
-  </dependencies>
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity</artifactId>
+			<version>${velocity.version}</version>
+		</dependency>
+	</dependencies>
 </project>

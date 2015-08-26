@@ -12,9 +12,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import com.helpchat.notifications.commons.api.HttpClientCaller;
 import com.helpchat.notifications.commons.model.ChatNotification;
 import com.helpchat.notifications.commons.model.SmsBO;
-import com.helpchat.notifications.service.INotificationService;
 
-public class NotificationServiceImpl implements INotificationService {
+public class NotificationServiceImpl {
 
   public static final Logger LOGGER = LoggerFactory.getLogger(NotificationServiceImpl.class);
 
