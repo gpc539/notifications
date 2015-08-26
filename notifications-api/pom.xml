@@ -13,6 +13,11 @@
 			<artifactId>notifications-common</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>com.helpchat</groupId>
+			<artifactId>notifications-service</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 	</dependencies>
 
 </project>

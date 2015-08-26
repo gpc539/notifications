@@ -6,7 +6,7 @@
 		<artifactId>notifications</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>notificaions-service</artifactId>
+	<artifactId>notifications-service</artifactId>
 	<properties>
 		<spring.rabbit.version>1.4.0.RELEASE</spring.rabbit.version>
 		<httpclient.version>4.5</httpclient.version>

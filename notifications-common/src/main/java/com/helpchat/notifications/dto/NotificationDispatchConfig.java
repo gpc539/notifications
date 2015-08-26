@@ -3,6 +3,7 @@ package com.helpchat.notifications.dto;
 import java.io.Serializable;
 import java.util.List;
 
+import com.helpchat.notifications.commons.NotificationPlatform;
 import com.helpchat.notifications.commons.NotificationType;
 
 public class NotificationDispatchConfig implements Serializable {
@@ -14,6 +15,7 @@ public class NotificationDispatchConfig implements Serializable {
   private String templateName;
   private List<KeyValuePair> dispatchParameters;
   private NotificationType type = NotificationType.TRANSACTIONAL;
+  private NotificationPlatform platform;
 
   public NotificationDispatchConfig() {}
 
@@ -59,6 +61,14 @@ public class NotificationDispatchConfig implements Serializable {
     this.templateName = templateName;
   }
 
+  public NotificationPlatform getPlatform() {
+    return platform;
+  }
+
+  public void setPlatform(NotificationPlatform platform) {
+    this.platform = platform;
+  }
+  
   public List<KeyValuePair> getDispatchParameters() {
     return dispatchParameters;
   }
