@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.helpchat.notifications.commons.SmsBO;
 import com.helpchat.notifications.dto.CustomerNotificationResponse;
 import com.helpchat.notifications.dto.NotificationDispatchConfig;
 import com.helpchat.notifications.service.INotificationService;
@@ -19,27 +20,19 @@ public class NotificationsService implements INotificationService {
 
     List<String> customerNotificationReferences = new ArrayList<String>();
     if (null != notificationDispatchConfig.getTemplateName()) {
-      templateUtil.getSMSMessageBody(notificationDispatchConfig.getTemplateName(),
-          notificationDispatchConfig.getDispatchParameters());
+      String smsMessageBody =
+          templateUtil.getSMSMessageBody(notificationDispatchConfig.getTemplateName(),
+              notificationDispatchConfig.getDispatchParameters());
+      notificationDispatchConfig.setText(smsMessageBody);
     }
 
-    /*
-     * for (String receipient : notificationDispatchConfig.getRecipients()) { SmsDispatchParameter
-     * smsDispatchParameter = new SmsDispatchParameter(smsText, recipient, appName,
-     * marketplaceId.getValue(), customerNotificationAuditData,
-     * smsDispatchConfig.getCustomerNotificationId(), smsDispatchConfig.isSmsDuplicationAllowed());
-     * 
-     * CustomerNotificationSendStatus notificationSendStatus =
-     * customerNotificationMessageSender.sendSmsNotification(smsDispatchParameter);
-     * 
-     * customerNotificationReferences.add(smsDispatchParameter.getCustomerNotificationReference());
-     * 
-     * if (CustomerNotificationSendStatus.FAILURE.equals(notificationSendStatus)) { return new
-     * CustomerNotificationResponse(CustomerNotificationSendStatus.FAILURE,
-     * customerNotificationReferences); } } return new
-     * CustomerNotificationResponse(CustomerNotificationSendStatus.SUCCESS,
-     * customerNotificationReferences); }
-     */
+
+    for (String receipient : notificationDispatchConfig.getRecipients()) {
+      SmsBO smsBO = new SmsBO();
+      smsBO.setContent(notificationDispatchConfig.getText());
+      smsBO.setTo(receipient);
+    }
+
     return null;
   }
 
