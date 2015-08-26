@@ -12,6 +12,7 @@ public class NotificationDispatchConfig implements Serializable {
   private List<String> recipients;
   private String text;
   private String templateName;
+  private List<KeyValuePair> dispatchParameters;
   private NotificationType type = NotificationType.TRANSACTIONAL;
 
   public NotificationDispatchConfig() {}
@@ -57,5 +58,13 @@ public class NotificationDispatchConfig implements Serializable {
   public void setTemplateName(String templateName) {
     this.templateName = templateName;
   }
-  
+
+  public List<KeyValuePair> getDispatchParameters() {
+    return dispatchParameters;
+  }
+
+  public void setDispatchParameters(List<KeyValuePair> dispatchParameters) {
+    this.dispatchParameters = dispatchParameters;
+  }
+
 }
