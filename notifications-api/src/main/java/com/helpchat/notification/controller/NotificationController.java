@@ -16,10 +16,18 @@ import com.helpchat.notifications.dto.NotificationDispatchConfig;
 @RestController
 @RequestMapping("/v4")
 public class NotificationController {
-
+  
   @RequestMapping(value = UriConstants.Notifications.SMS, method = RequestMethod.POST)
   public ResponseEntity<CustomerNotificationResponse> sendSMS(
       @RequestBody NotificationDispatchConfig smsDispatchConfig) {
+    return new ResponseEntity<CustomerNotificationResponse>(new CustomerNotificationResponse(),
+        HttpStatus.OK);
+  }
+  
+  @RequestMapping(value = "/test", method = RequestMethod.GET)
+  public ResponseEntity<CustomerNotificationResponse> sendPushNotification(
+      ) {
+    
     return new ResponseEntity<CustomerNotificationResponse>(new CustomerNotificationResponse(),
         HttpStatus.OK);
   }

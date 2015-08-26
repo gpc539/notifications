@@ -24,7 +24,8 @@
 		<rabbit:bindings>
 			<rabbit:binding key="helpchat_emailqueue" queue="helpchat_emailqueue"></rabbit:binding>
 			<rabbit:binding key="helpchat_smsqueue" queue="helpchat_smsqueue"></rabbit:binding>
-			<rabbit:binding key="helpchat_pushnotification" queue="helpchat_pushnotification"></rabbit:binding>
+			<rabbit:binding key="helpchat_googlepushnotification" queue="helpchat_googlepushnotification"></rabbit:binding>
+			<rabbit:binding key="helpchat_applepushnotification" queue="helpchat_applepushnotification"></rabbit:binding>
 		</rabbit:bindings>
 	</rabbit:direct-exchange>
 
@@ -44,8 +45,15 @@
 		<constructor-arg value="false"></constructor-arg>
 	</bean>
 	
-	<bean id="helpchat_pushnotification" class="org.springframework.amqp.core.Queue">
-		<constructor-arg value="helpchat_pushnotification"></constructor-arg>
+	<bean id="helpchat_googlepushnotification" class="org.springframework.amqp.core.Queue">
+		<constructor-arg value="helpchat_googlepushnotification"></constructor-arg>
+		<constructor-arg value="true"></constructor-arg>
+		<constructor-arg value="false"></constructor-arg>
+		<constructor-arg value="false"></constructor-arg>
+	</bean>
+	
+	<bean id="helpchat_applepushnotification" class="org.springframework.amqp.core.Queue">
+		<constructor-arg value="helpchat_applepushnotification"></constructor-arg>
 		<constructor-arg value="true"></constructor-arg>
 		<constructor-arg value="false"></constructor-arg>
 		<constructor-arg value="false"></constructor-arg>
@@ -66,12 +74,17 @@
 		<property name="queue" value="helpchat_smsqueue"></property>
 	</bean>
 	
-	<bean id="amqpPushNotificationTemplate" class="org.springframework.amqp.rabbit.core.RabbitTemplate">
+	<bean id="amqpGooglePushNotificationTemplate" class="org.springframework.amqp.rabbit.core.RabbitTemplate">
 		<constructor-arg ref="connectionFactory"></constructor-arg>
 		<property name="exchange" value="exchange"></property>
-		<property name="routingKey" value="helpchat_pushnotification"></property>
-		<property name="queue" value="helpchat_pushnotification"></property>
+		<property name="routingKey" value="helpchat_googlepushnotification"></property>
+		<property name="queue" value="helpchat_googlepushnotification"></property>
 	</bean>
 	
-	
+	<bean id="amqpApplePushNotificationTemplate" class="org.springframework.amqp.rabbit.core.RabbitTemplate">
+		<constructor-arg ref="connectionFactory"></constructor-arg>
+		<property name="exchange" value="exchange"></property>
+		<property name="routingKey" value="helpchat_applepushnotification"></property>
+		<property name="queue" value="helpchat_applepushnotification"></property>
+	</bean>
 </beans>
