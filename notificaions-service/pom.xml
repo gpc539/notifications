@@ -6,4 +6,25 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>notificaions-service</artifactId>
+  <properties>
+  	<spring.rabbit.version>1.4.0.RELEASE</spring.rabbit.version>
+  	<httpclient.version>4.5</httpclient.version>
+  </properties>
+  <dependencies>
+  		<dependency>
+			<groupId>com.helpchat</groupId>
+			<artifactId>notifications-common</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+  		<dependency>
+			<groupId>org.springframework.amqp</groupId>
+			<artifactId>spring-rabbit</artifactId>
+			<version>${spring.rabbit.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>${httpclient.version}</version>
+		</dependency>
+  </dependencies>
 </project>
